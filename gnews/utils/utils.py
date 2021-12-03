@@ -20,16 +20,6 @@ def country_mapping(country):
     return AVAILABLE_COUNTRIES.get(country)
 
 
-def import_or_install(package):
-    try:
-        __import__(package)
-    except ImportError:
-        if hasattr(pip, 'main'):
-            pip.main(['install', package])
-        else:
-            pip._internal.main(['install', package])
-
-
 def connect_database(db_user, db_pw, db_name, collection_name):
     """Mongo DB Establish Cluster Connection"""
 

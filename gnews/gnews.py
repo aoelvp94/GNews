@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as Soup
 from dotenv import load_dotenv
 
 from gnews.utils.constants import AVAILABLE_COUNTRIES, AVAILABLE_LANGUAGES, TOPICS, BASE_URL, USER_AGENT
-from gnews.utils.utils import connect_database, post_database, import_or_install, process_url
+from gnews.utils.utils import connect_database, post_database, process_url
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO,
                     datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -83,7 +83,6 @@ class GNews:
 
     def get_full_article(self, url):
         try:
-            import_or_install('newspaper3k')
             from newspaper import Article
             article = Article(url="%s" % url, language=self._language)
             article.download()
